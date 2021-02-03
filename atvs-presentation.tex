@@ -1,0 +1,160 @@
+\documentclass[aspectratio=169,usepdftitle=true]{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage[english,main=ngerman]{babel}
+\usepackage{lipsum}
+
+\usetheme{dividing-lines}
+\title{Trusting Trust Revisited}
+\subtitle{Preventing Software Supply Chain Attacks\hfill\\Using Modern Methods}
+\institute{Institute of Distributed Systems, Ulm University}
+
+\tag{Seminar}
+
+\date{12, Februar 2021}
+
+\author{Florian Sihler}
+\email{florian.sihler@uni-ulm.de}
+
+\outro{Ulm, \today}
+
+% just an example command
+\newcommand\twosplit[3][t]{%
+    \begin{columns}[#1]
+    \begin{column}{0.475\linewidth}
+        #2
+    \end{column}\hfill
+    \begin{column}{0.475\linewidth}
+        #3
+    \end{column}
+    \end{columns}
+}
+
+\usepackage[backend=bibtex8,style=alphabetic]{biblatex}
+\addbibresource{../example.bib}
+
+\begin{document}
+
+\section{Theoretische Grundlagen}
+\subsection{Der Algorithmusbegriff}
+\begin{frame}{Was ist ein Algorithmus?}
+    \lipsum[2]
+\end{frame}
+\subsection{Algorithmen analysieren}
+\makeatletter
+
+\begin{frame}{Algorithmuseigenschaften}
+    \begin{itemize}
+        \item Zu Beginn gilt es einige Begriffe zu klären: \begin{description}[Elementaroperation]
+            \item[Prozess] Die Ausführung der Schritte eines Algorithmus
+            \item[Prozessor] Der Ausführende (Mensch, Computer, \ldots)
+            \item[Elementaroperation] Eine einzelne, eindeutige Handlung.
+        \end{description}
+    \end{itemize}
+\end{frame}
+
+
+
+\section{Another example}
+\subsection{This is an example}
+
+\begin{frame}{Mega-Example 1}
+    Hello \cite{knuth-fa}!
+\end{frame}
+
+\begin{frame}{Mega-Example 2}
+    World
+\end{frame}
+
+\subsection{This is an example, 2}
+
+\begin{frame}{Mega-Example 1}
+    Hello
+\end{frame}
+
+\begin{frame}{Mega-Example 2}
+    World \cite{knuth-web}!
+\end{frame}
+
+\section{Talk the talker}
+\subsection{This is an example}
+
+\begin{frame}{Mega-Example 1}
+    Hello \cite{dirac}!
+\end{frame}
+
+\begin{frame}{Mega-Example 2}
+    World as seen in \cite{einstein}.
+\end{frame}
+
+\subsection{This is an example, 2}
+
+\begin{frame}{Mega-Example 1}
+    Hello
+\end{frame}
+
+\begin{frame}{Mega-Example 2}
+    World
+\end{frame}
+
+
+\section{Conclusion}
+\subsection{This is an example}
+
+\begin{frame}{Mega-Example 1}
+    Hello
+\end{frame}
+
+\begin{frame}{Mega-Example 2}
+    World
+\end{frame}
+
+\subsection{This is an example, 2}
+
+\begin{frame}{Mega-Example 1}
+    Hello
+\end{frame}
+
+\begin{frame}{Mega-Example 2}
+    World
+\end{frame}
+
+
+\section{Apfel}
+\begin{frame}{Mega-Example 1}
+    Hello
+\end{frame}
+
+\begin{frame}{Mega-Example 2}
+    World
+\end{frame}
+
+\section{Birne}
+\begin{frame}{Mega-Example 1}
+    Hello
+\end{frame}
+
+\begin{frame}{Mega-Example 2}
+    World
+\end{frame}
+
+\section{Tomate}
+\begin{frame}{Mega-Example 1}
+    Hello
+\end{frame}
+
+\begin{frame}{Mega-Example 2}
+    World
+\end{frame}
+
+\section{Gurke}
+\begin{frame}{Mega-Example 1}
+    Hello
+\end{frame}
+
+\begin{frame}{Mega-Example 2}
+    World
+\end{frame}
+\end{document}
