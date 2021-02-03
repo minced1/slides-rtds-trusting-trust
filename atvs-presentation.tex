@@ -6,7 +6,11 @@
 \usepackage[english,main=ngerman]{babel}
 \usepackage{lipsum}
 
-\usetheme{dividing-lines}
+\usetheme[libs,nofootfade,centerfoot]{dividing-lines}
+\usepackage{lecture-t-diagrams,csquotes,siunitx,booktabs}
+\usepackage[color,sopra-tables={cpalette},lecture-links={patchurl},lecture-bibliography={biber,style=numeric}]{lithie-util}
+\SetAllLinkStyle{#1}%
+
 \title{Trusting Trust Revisited}
 \subtitle{Preventing Software Supply Chain Attacks\hfill\\Using Modern Methods}
 \institute{Institute of Distributed Systems, Ulm University}
@@ -32,18 +36,15 @@
     \end{columns}
 }
 
-\usepackage[backend=bibtex8,style=alphabetic]{biblatex}
-\addbibresource{../example.bib}
+\addbibresource{./bibliography-collection/lithie.bib}
 
 \begin{document}
 
-\section{Theoretische Grundlagen}
-\subsection{Der Algorithmusbegriff}
+\section{Motivation}
+
 \begin{frame}{Was ist ein Algorithmus?}
     \lipsum[2]
 \end{frame}
-\subsection{Algorithmen analysieren}
-\makeatletter
 
 \begin{frame}{Algorithmuseigenschaften}
     \begin{itemize}
@@ -55,41 +56,28 @@
     \end{itemize}
 \end{frame}
 
-
-
-\section{Another example}
-\subsection{This is an example}
+\section{The Attack}
 
 \begin{frame}{Mega-Example 1}
-    Hello \cite{knuth-fa}!
+    Hello \cite{Thompson1984}!
+\end{frame}
+
+\section{Diverse Double Compiling}
+
+\begin{frame}{Mega-Example 1}
+    \hspace*{-.2\linewidth}\includegraphics[width=1.2\linewidth]{asq_timeline-compressed}
+\end{frame}
+
+\section{CHAINIAC}
+
+\begin{frame}{Mega-Example 1}
+    Hello \cite{Nikitin2017}!
 \end{frame}
 
 \begin{frame}{Mega-Example 2}
-    World
+    World as seen in \cite{pdf:ddc}.
 \end{frame}
 
-\subsection{This is an example, 2}
-
-\begin{frame}{Mega-Example 1}
-    Hello
-\end{frame}
-
-\begin{frame}{Mega-Example 2}
-    World \cite{knuth-web}!
-\end{frame}
-
-\section{Talk the talker}
-\subsection{This is an example}
-
-\begin{frame}{Mega-Example 1}
-    Hello \cite{dirac}!
-\end{frame}
-
-\begin{frame}{Mega-Example 2}
-    World as seen in \cite{einstein}.
-\end{frame}
-
-\subsection{This is an example, 2}
 
 \begin{frame}{Mega-Example 1}
     Hello
@@ -101,17 +89,6 @@
 
 
 \section{Conclusion}
-\subsection{This is an example}
-
-\begin{frame}{Mega-Example 1}
-    Hello
-\end{frame}
-
-\begin{frame}{Mega-Example 2}
-    World
-\end{frame}
-
-\subsection{This is an example, 2}
 
 \begin{frame}{Mega-Example 1}
     Hello
@@ -122,7 +99,6 @@
 \end{frame}
 
 
-\section{Apfel}
 \begin{frame}{Mega-Example 1}
     Hello
 \end{frame}
@@ -131,30 +107,5 @@
     World
 \end{frame}
 
-\section{Birne}
-\begin{frame}{Mega-Example 1}
-    Hello
-\end{frame}
 
-\begin{frame}{Mega-Example 2}
-    World
-\end{frame}
-
-\section{Tomate}
-\begin{frame}{Mega-Example 1}
-    Hello
-\end{frame}
-
-\begin{frame}{Mega-Example 2}
-    World
-\end{frame}
-
-\section{Gurke}
-\begin{frame}{Mega-Example 1}
-    Hello
-\end{frame}
-
-\begin{frame}{Mega-Example 2}
-    World
-\end{frame}
 \end{document}
