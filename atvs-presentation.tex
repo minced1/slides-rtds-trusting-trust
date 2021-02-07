@@ -42,49 +42,43 @@
 
 \section{Motivation}
 
-\begin{frame}{Was ist ein Algorithmus?}
-    \lipsum[2]
-\end{frame}
+\def\typesetBox#1#2#3#4{%
+    \pbox{7cm}{{\Large\sbfamily#1}\rlap{\textsuperscript{\color{gray}\cite{#4}}}\\\color{gray}#2\hfill#3}%
+}
 
-\begin{frame}{Algorithmuseigenschaften}
-    \begin{itemize}
-        \item Zu Beginn gilt es einige Begriffe zu klären: \begin{description}[Option B]
-            \item[Option A] Die Ausführung der Schritte eines Algorithmus eins lol
-            \item[Option B] Der Ausführende (Mensch, Computer, \ldots)
-            \item[Option C] Eine einzelne, eindeutige Handlung.
-        \end{description}
-    \end{itemize}
+% \SidebarCite{url:xcodeghost}
+% \SidebarCite{attacksolarwinds2020}
+% \SidebarCite{Lipovsky2011}
+\begin{frame}{\space}
+    \begin{layout-imageonly}
+    \begin{tikzpicture}
+        \node at(0.25,0.25) {\typesetBox{>\,500\,million users}{XcodeGhost}{2005}{url:xcodeghost}};
+        \node at(7,2) {\typesetBox{\textasciitilde\,18\,000 customers}{SolarWinds}{2020}{attacksolarwinds2020}};
+        \node at(3,-2) {\typesetBox{>\,100\,000 users}{Win32/Induc}{2009}{Lipovsky2011}};
+    \end{tikzpicture}
+\end{layout-imageonly}
 \end{frame}
+%\SidebarReset{}
 
 \section{The Attack}
-
-\begin{frame}{Mega-Example 1}
-    Hello \cite{Thompson1984}!
+% \SidebarCite{Thompson1984}
+\begin{frame}{The Attack}
+    Hello \citeauthor{Thompson1984} \cite{Thompson1984}!
 \end{frame}
+% \SidebarReset{}
 
 \section{Diverse Double Compiling}
 
 \begin{frame}{Mega-Example 1}
-    \hspace*{-.2\linewidth}\includegraphics[width=1.2\linewidth]{asq_timeline-compressed}
+    \begin{layout-imageonly}
+        \includegraphics[width=\linewidth]{asq_timeline-compressed}
+    \end{layout-imageonly}
 \end{frame}
 
 \section{CHAINIAC}
 
 \begin{frame}{Mega-Example 1}
     Hello \cite{Nikitin2017}!
-\end{frame}
-
-\begin{frame}{Mega-Example 2}
-    World as seen in \cite{pdf:ddc}.
-\end{frame}
-
-
-\begin{frame}{Mega-Example 1}
-    Hello
-\end{frame}
-
-\begin{frame}{Mega-Example 2}
-    World
 \end{frame}
 
 
@@ -94,18 +88,6 @@
     Hello
 \end{frame}
 
-\begin{frame}{Mega-Example 2}
-    World
-\end{frame}
-
-
-\begin{frame}{Mega-Example 1}
-    Hello
-\end{frame}
-
-\begin{frame}{Mega-Example 2}
-    World
-\end{frame}
 
 \pdfbookmark[0]{Endfolie -- Quellen}{endfolie}%
 \end{document}
