@@ -1,3 +1,5 @@
 default_files:
   - atvs-presentation
 default_threads: 1
+extra_wanted_files:
+  - "{out_dir}/{file_base_noext}.pdfpc"

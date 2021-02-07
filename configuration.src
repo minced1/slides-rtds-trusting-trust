@@ -1,0 +1,52 @@
+\documentclass[aspectratio=169,usepdftitle=true,handout]{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage[english,main=ngerman]{babel}
+\usepackage{lipsum}
+
+\usetheme[libs,nofootfade,centerfoot]{dividing-lines}
+\usepackage{lecture-t-diagrams,csquotes,siunitx,booktabs,bookmark}
+\usepackage[color,sopra-tables={cpalette},lecture-links={patchurl},lecture-bibliography={biber,style=numeric},sopra-listings={print},beamer-latex-pdfpc-notes={disablemarkdown=false}]{lithie-util}
+\usetikzlibrary{arrows.meta,calc,backgrounds}
+\solLoadLanguage{cpp}
+
+\lstset{showstringspaces=false}
+\colorlet{semigray}{gray!60!darkgray}
+\lstcolorlet{keywordA}{black} \lstcolorlet{keywordB}{black}
+\lstcolorlet{keywordC}{semigray} \lstcolorlet{literals}{semigray}
+\solSetStyle{numbers}{\color{semigray}}
+
+\def\SL#1{\mbox{\tblockfont{SL}\ifx!#1!\else\textsubscript{\thinspace\T{#1}}\fi}}
+\def\SC#1{\mbox{\tblockfont{SC}\ifx!#1!\else\textsubscript{\thinspace\T{#1}}\fi}}
+\def\ML#1{\mbox{\tblockfont{ML}\ifx!#1!\else\textsubscript{\thinspace\T{#1}}\fi}}
+\colorlet{lgray}{lightgray!45!white}
+
+\SetAllLinkStyle{#1}%
+
+% just an example command
+\newcommand\twosplit[3][t]{%
+    \begin{columns}[#1]
+    \begin{column}{0.475\linewidth}
+        #2
+    \end{column}\hfill
+    \begin{column}{0.475\linewidth}
+        #3
+    \end{column}
+    \end{columns}
+}
+
+\def\typesetBox#1#2#3#4{%
+    \pbox{7cm}{{\Large\sbfamily#1}\rlap{\textsuperscript{\color{gray}\cite{#4}}}\\\color{gray}#2\hfill#3}%
+}
+
+\tikzset{
+    bc/.style={circle,draw,fill,#1,text=darkgray,align=center,text width=0.75em},
+    bcsmall/.style={circle,draw,fill,#1,text=darkgray,align=center,inner sep=2pt},
+    bc/.default={btdl@color@secondary},
+    bcsmall/.default={btdl@color@secondary}
+}
+
+\def\cfl#1{\faFile\llap{\color{#1}\tiny\faCogs\;}}
+\def\tagN#1#2{\node[above left=-0.075cm,darkgray,scale=0.65,circle,fill=lgray,inner sep=1pt] at(#1.south east) {\sbfamily#2};}
