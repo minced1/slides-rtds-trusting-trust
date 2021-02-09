@@ -81,8 +81,6 @@
 }
 % \node[bc] (2) at (4,0) {\cfl{hl-shade}}};
 }
-\newsavebox\infectingdcbox
-\savebox\infectingdcbox{\disableos\begin{tikzpicture}[xscale=0.75]\infectingdc\end{tikzpicture}}
 
 \makeatletter
 \begin{frame}[fragile]{The Attack}
@@ -128,19 +126,20 @@ if source contains "compile()":
 
 \def\ddc{%
 \onslide<6->{\node[bc] (0) at (0,1.4) {\faFileText};
-\node[left=0.5cm] at(0.west) {1.}; \tagS{0}{A}}
+\node[left=0.5cm,darkgray] at(0.west) {1.}; \tagS{0}{A}}
 \onslide<7->{\node[bc] (1) at (2,1.4) {\!\faCogs};
-\draw[tarrow=lgray] (0) -- (1); \tagN{1}{A}}
+\draw[tarrow=lgray] (0) -- (1);}
 \onslide<8->{\node[bc] (2) at (4,1.4) {\cfl{lgray}};
-\draw[tarrow=lgray] (1) -- (2); \tagS{2}{A}}
-\begin{pgfonlayer}{background}
-    \onslide<9->{\draw[btdl@color@primary,ultra thick] (1) to[bend left=42,edge node={node[circle,fill=white,inner sep=2pt] {$=$}}] (2);}
-\end{pgfonlayer}
-
+\draw[tarrow=lgray] (1) -- (2);}
+%\begin{pgfonlayer}{background}
+    \onslide<9->{\draw[btdl@color@primary,ultra thick,line cap=butt] (1) to[bend left=42,edge node={node[circle,fill=white,inner sep=2pt] {$=$}}] (2);}
+%\end{pgfonlayer}
+% cheep overlay can't use background as this fails background onslide overwrite
+\onslide<7->{\tagN{1}{A}}
 
 \onslide<10->{\node[bc] (3) at (0,0) {\faFileText};
 \tagS{3}{A}
-\node[left=0.5cm] at(3.west) {2.};}
+\node[left=0.5cm,darkgray] at(3.west) {2.};}
 \onslide<11->{\node[bc] (4) at (2,0) {\!\faCogs};
 \tagN{4}{B}\draw[tarrow=lgray] (3) -- (4);}
 \onslide<12->{\node[bc] (5) at (2,-1.4) {\cfl{lgray}};
@@ -152,16 +151,17 @@ if source contains "compile()":
 \draw[tarrow=lgray] (6) -- (5);}
 
 \onslide<14->{\node[bc] (7) at (4,-1.4) {\cfl{lgray}};
-\tagS{7}{A}
 \draw[tarrow=lgray] (5) -- (7);}
 
-\begin{pgfonlayer}{background}
-    \onslide<15->{\draw[btdl@color@primary,ultra thick] (2) to[bend left=42,edge node={node[circle,fill=white,inner sep=2pt] {$=$}}] (7);}
-\end{pgfonlayer}
+%\begin{pgfonlayer}{background}
+    \onslide<15->{\draw[btdl@color@primary,ultra thick,line cap=butt] (2) to[bend left=42,edge node={node[circle,fill=white,inner sep=2pt] {$=$}}] (7);}
+%\end{pgfonlayer}
+
+\onslide<8->{\node[bc] (c2) at (4,1.4) {\cfl{lgray}};\tagS{2}{A}}
+\onslide<14->{\node[bc] (c7) at (4,-1.4) {\cfl{lgray}};
+\tagS{7}{A}}
 }
 
-\newsavebox\ddcbox
-\savebox\ddcbox{\disableos\begin{tikzpicture}[bc/.default={lgray},xscale=0.8]\ddc\end{tikzpicture}}
 
 \section{Diverse Double Compiling}
 % \SidebarCite{pdf:ddc}
@@ -200,98 +200,117 @@ if source contains "compile()":
 % \SidebarReset
 
 \section{CHAINIAC}
+\def\chainc{%
+\onslide<4->{\node[br=hl-shade] (r) at (0.25,0) {\sbfamily Release\nodepart{two}\smaller\faKey~~\faKey~~\faKey~~\faKey};}
+\foreach \a in {45,15,-15,-45} {
+    \onslide<3->{\node[bc] (d\a) at(\a+180:1.66cm) {\!\faLaptop};}
+    \onslide<4->{\draw[tarrow=lgray] (d\a) -- (r);}
+}
+\begin{scope}[xshift=4cm]
+    \onslide<5->{\node[bc] (s0) at (d-45-|-1.33,1) {\faBuilding};
+    \node[bc] (s1) at (-1.33,0) {\faBuilding};
+    \node[bc] (s2) at (d45-|-1.33,1) {\faBuilding};}
+
+    \onslide<6->{\node[bc=hl-shade] (s) at (0,0) {\faKey};
+    % \node[circle,minimum width=2*1.66cm] (sc) at (0,0) {};
+    \foreach \i in {0,1,2} {
+        \draw[tarrow=lgray] (s\i) -- (s);
+    }}
+\end{scope}
+
+\begin{scope}[xshift=6.15cm,yshift=.75cm]
+    \begin{pgfinterruptboundingbox}
+    \foreach \i/\a/\o in {0/7/8,1/6/7,2/5/7,3/4/7} {%
+        \def\c{lgray}%
+        \ifnum\i=0\def\c{hl-shade}\fi%
+        \onslide<\o->{\node[bc=\c,text width=.25em] (t\i) at (0,-\i/2) {};}
+        %\node[darkgray,scale=0.75] at (t\i) {\a};
+    }
+    \onslide<7->{\node[brs=lgray,text width=.25em,text height=.25em] (tc1) at (0.66,-1/2) {};}
+    \onslide<7->{\node[brs=lgray,text width=.25em,text height=.25em] (tc3) at (0.66,-3/2) {};}
+    \begin{pgfonlayer}{background}
+        \onslide<7->{\draw[tarrow=lgray,line cap=round] (t3)++(0,-.5cm) coordinate (lrc-end) -- ($(t0)+(0,0.75cm)$);}
+        \onslide<7->{\draw[t=lgray,line cap=round] (tc1) -- (lrc-end-|tc3) (tc1) -- (t1) (t2) -- (tc3) -- (t3);}
+        \onslide<8->{\draw[t=lgray,line cap=round] (t0) -- (tc1);}
+    \end{pgfonlayer}
+    \end{pgfinterruptboundingbox}
+\end{scope}
+
+\begin{scope}[xshift=9.5cm]
+    \onslide<9->{\node[bc] (u) at (d-15-|0,0) {\faRefresh};
+    \foreach[count=\i] \x/\y in {0/0,-.75/0,.75/0,-.375/-.5,.375/-.5} {
+        \node[darkgray,scale=0.9] (u\i) at(\x,\y-.75) {\faUser};
+        \draw[t=lgray] (u\i) -- (u);
+    }}
+\end{scope}
+
+\begin{scope}[yshift=2cm]
+\begin{pgfinterruptboundingbox}
+    \onslide<2->{\fill[lgray,rounded corners=1.5pt] (-1.66-.7,0) rectangle (9.5+.75+.6,0.1) coordinate (ue); \coordinate (us) at (-1.66-.7,0.1);
+    \draw[line width=.5ex,btdl@color@background] (1.66,0) -- ++(0,.1) coordinate (u1);
+    \draw[line width=.5ex,btdl@color@background] (5,0) -- ++(0,.1) coordinate (u2);
+    \draw[line width=.5ex,btdl@color@background] (8,0) -- ++(0,.1) coordinate (u3);}
+    \onslide<4->{\path[darkgray] (us) -- (u1) node[midway,above=-.1cm] {\strut Developers};}
+    \onslide<6->{\path[darkgray] (u1) -- (u2) node[midway,above=-.1cm] {\strut Cothority};}
+    \onslide<8->{\path[darkgray] (u2) -- (u3) node[midway,above=-.1cm] {\strut Timeline};}
+    \onslide<9->{\path[darkgray] (u3) -- (ue) node[midway,above=-.1cm] {\strut Mirror};}
+\end{pgfinterruptboundingbox}
+\end{scope}
+}
+
 \SidebarCite{Nikitin2017}
 \begin{frame}{CHAINIAC}
 \begin{layout-imageonly}
     % TODO: bei animationen zuerst grayed out und dann einblenden
 \centering\vspace*{-.25em}\begin{tikzpicture}[bc/.default={lgray},br/.default={lgray}]
-    \onslide<4->{\node[br=hl-shade] (r) at (0.25,0) {\sbfamily Release\nodepart{two}\smaller\faKey~~\faKey~~\faKey~~\faKey};}
-    \foreach \a in {45,15,-15,-45} {
-        \onslide<3->{\node[bc] (d\a) at(\a+180:1.66cm) {\!\faLaptop};}
-        \onslide<4->{\draw[tarrow=lgray] (d\a) -- (r);}
-    }
-    \begin{scope}[xshift=4cm]
-        \onslide<5->{\node[bc] (s0) at (d-45-|-1.33,1) {\faBuilding};
-        \node[bc] (s1) at (-1.33,0) {\faBuilding};
-        \node[bc] (s2) at (d45-|-1.33,1) {\faBuilding};}
-
-        \onslide<6->{\node[bc=hl-shade] (s) at (0,0) {\faKey};
-        % \node[circle,minimum width=2*1.66cm] (sc) at (0,0) {};
-        \foreach \i in {0,1,2} {
-            \draw[tarrow=lgray] (s\i) -- (s);
-        }}
-    \end{scope}
-
-    \begin{scope}[xshift=6.15cm,yshift=.75cm]
-        \begin{pgfinterruptboundingbox}
-        \foreach \i/\a/\o in {0/7/8,1/6/7,2/5/7,3/4/7} {%
-            \def\c{lgray}%
-            \ifnum\i=0\def\c{hl-shade}\fi%
-            \onslide<\o->{\node[bc=\c,text width=.25em] (t\i) at (0,-\i/2) {};}
-            %\node[darkgray,scale=0.75] at (t\i) {\a};
-        }
-        \onslide<7->{\node[brs=lgray,text width=.25em,text height=.25em] (tc1) at (0.66,-1/2) {};}
-        \onslide<7->{\node[brs=lgray,text width=.25em,text height=.25em] (tc3) at (0.66,-3/2) {};}
-        \begin{pgfonlayer}{background}
-            \onslide<7->{\draw[tarrow=lgray,line cap=round] (t3)++(0,-.5cm) coordinate (lrc-end) -- ($(t0)+(0,0.75cm)$);}
-            \onslide<7->{\draw[t=lgray,line cap=round] (tc1) -- (lrc-end-|tc3) (tc1) -- (t1) (t2) -- (tc3) -- (t3);}
-            \onslide<8->{\draw[t=lgray,line cap=round] (t0) -- (tc1);}
-        \end{pgfonlayer}
-        \end{pgfinterruptboundingbox}
-    \end{scope}
-
-    \begin{scope}[xshift=9.5cm]
-        \onslide<9->{\node[bc] (u) at (d-15-|0,0) {\faRefresh};
-        \foreach[count=\i] \x/\y in {0/0,-.75/0,.75/0,-.375/-.5,.375/-.5} {
-            \node[darkgray,scale=0.9] (u\i) at(\x,\y-.75) {\faUser};
-            \draw[t=lgray] (u\i) -- (u);
-        }}
-    \end{scope}
-
-    \begin{scope}[yshift=2cm]
-    \begin{pgfinterruptboundingbox}
-        \onslide<2->{\fill[lgray,rounded corners=1.5pt] (-1.66-.7,0) rectangle (9.5+.75+.6,0.1) coordinate (ue); \coordinate (us) at (-1.66-.7,0.1);
-        \draw[line width=.5ex,btdl@color@background] (1.66,0) -- ++(0,.1) coordinate (u1);
-        \draw[line width=.5ex,btdl@color@background] (5,0) -- ++(0,.1) coordinate (u2);
-        \draw[line width=.5ex,btdl@color@background] (8,0) -- ++(0,.1) coordinate (u3);}
-        \onslide<4->{\path[darkgray] (us) -- (u1) node[midway,above=-.1cm] {\strut Developers};}
-        \onslide<6->{\path[darkgray] (u1) -- (u2) node[midway,above=-.1cm] {\strut Cothority};}
-        \onslide<8->{\path[darkgray] (u2) -- (u3) node[midway,above=-.1cm] {\strut Timeline};}
-        \onslide<9->{\path[darkgray] (u3) -- (ue) node[midway,above=-.1cm] {\strut Mirror};}
-    \end{pgfinterruptboundingbox}
-    \end{scope}
-
+    \chainc
 \end{tikzpicture}
 \end{layout-imageonly}
 \end{frame}
 \SidebarReset
 
 \section{Conclusion}
-
+\nocite{url:repbuilds}
+\def\conclusionshow{%
+\begin{tikzpicture}
+    \onslide<2->{\begin{scope}[xscale=0.8,yshift=-.9cm]
+        {\disableos\infectingdc}%
+    \end{scope}}
+    \onslide<3->{\begin{scope}[bc/.default={lgray},xshift=7.25cm,xscale=0.8]
+        {\disableos\ddc}%
+    \end{scope}}
+\end{tikzpicture}}
 \begin{frame}{Conclusion}
 \begin{layout-imageonly}
-    \centering\vfill\begin{tikzpicture}
-        \onslide<2->{
-            \def\scaleofinfectingdc{1}
-            \only<3->{\def\scaleofinfectingdc{0.6}}
-        \begin{pgfinterruptboundingbox}
-            \node[brs=white,scale=\scaleofinfectingdc] (ib) at (0,0) {\usebox{\infectingdcbox}};
-        \end{pgfinterruptboundingbox}
-        \only<2>{\node[below] at (ib.south|-0,-2) {The Attack};}
-        \onslide<3->{\node[below] at (ib.south|-0,-1.5) {The Attack};}
-        }
-        \onslide<3->{
-            \def\scaleddcdc{1}
-            \only<4->{\def\scaleddcdc{0.6}}
-        \begin{pgfinterruptboundingbox}
-            \node[brs=white,scale=\scaleddcdc] (ddc) at (6,0) {\usebox{\ddcbox}};
-        \end{pgfinterruptboundingbox}
-            \only<3>{\node[below] at (ddc.south|-0,-3) {Diverse Double-Compiling};}
-            \onslide<4->{\node[below] at (ddc.south|-0,-1.5) {Diverse Double-Compiling};}
-        }
-    \end{tikzpicture}\vfill\null
+    \centering\vfill\only<handout:0|6->{%
+        \colorlet{hl-shade}{gray!80!white}%#
+        \colorlet{btdl@color@primary}{gray!80!white}%
+        \tikzset{every path/.append style={opacity=0.25}}
+    }
+    \only<1-3>{\hspace*{2em}}
+\only<4->{\begin{columns}[t]
+\begin{column}[c]{0.325\linewidth}
+    \null\vspace*{2em}\vfill\onslide<7->{\faAngleRight~Reproducible Builds\bigskip\par}
+    \onslide<8->{\faAngleRight~Tool support\vspace*{4em}\par}
+    \onslide<9->{\only<10->{\sbfamily}\faAngleRight~\only<10->{Trusting }Trust\strut}
+\end{column}\hfill
+\begin{column}{0.6\linewidth}}
+    \centering\only<4->{\resizebox{\linewidth}{!}}\conclusionshow\hspace*{5em}\vspace*{3em}\\%
+    \only<4->{\onslide<5->{\resizebox{.925\linewidth}{!}{\begin{tikzpicture}[bc/.default={lgray},br/.default={lgray}]
+        {\disableos\chainc}
+    \end{tikzpicture}}\null}}
+    \only<4->{\vspace*{1.25em}\end{column}\end{columns}\hspace*{15em}}\vfill
 \end{layout-imageonly}
     % [TODO] Rückblick: Problem. Dann Übersicht: DDC + CHAINIAC + weitere Probleme: eine Option in vielen. \(\Rightarrow\) Rückblende zu warum \enquote{Trust}
+\note[itemize]{
+    \item Rückblick bisherige Themen: Angriffe, DDC, Chainiac
+    \item Reproducible Builds effort: Linux Kernel, (MES) C-Compiler,  ...
+    \item Tool Support: Docker, APT+CHAINIAC, diffoscope (Vergleich), RepLoc (Suche)...
+    \item Schwachstellen -- sichert \textbf{nicht} den Code sondern nur, dass nichts modifiziert wird.
+    \item SolarWinds Breach nach Wheel mit RepBuilds behebbar
+    \item Aufwand für einen zu viel... Nicht nur den Herstellern vertrauen, sondern allen...
+    \item Nicht nur Trust => Trusting Trust
+}
 \end{frame}
 
 
