@@ -4,7 +4,6 @@
 \usepackage[utf8]{inputenc}
 \usepackage{microtype}
 \usepackage[english,main=ngerman]{babel}
-\usepackage{lipsum}
 
 \usetheme[libs,nofootfade,centerfoot]{dividing-lines}
 \usepackage{lecture-t-diagrams,csquotes,siunitx,booktabs,bookmark,relsize}
