@@ -38,7 +38,7 @@
 \tblocksize=0.95cm
 \def\boostrapping{%
 \begin{t-diagram}[tborder/.append style={draw=none,fill=lgray,rounded corners=4pt}]
-    \begin{scope}[tborder/.append style={fill=btdl@color@secondary}]
+    \begin{scope}[tborder/.append style={fill=hl-shade}]
         \onslide<2->{\tblock[g]{\tblocksize*8+4*\tblockoffset,2*\tblocksize+2*\tblockoffset}{\SL{}}{\ML{}}{\ML{}}}
     \end{scope}
     \begin{scope}[tborder/.append style={densely dashed}]
@@ -69,24 +69,24 @@
         \onslide<12->{\node[bc] (0) at (0,1.4) {\faFileText};}
         \onslide<13->{
             \node[bc=lgray] (1) at (0,0) {\faFile\llap{\color{lgray}\tiny\faCogs\;}};
-            \draw[-Kite,ultra thick,btdl@color@secondary] (0) -- (1);
+            \draw[tarrow=hl-shade] (0) -- (1);
         }
         \onslide<14->{
-            \node[bc] (2) at (2,0) {\cfl{btdl@color@secondary}};
-            \draw[-Kite,ultra thick,btdl@color@secondary] (1) -- (2);
+            \node[bc] (2) at (2,0) {\cfl{hl-shade}};
+            \draw[tarrow=hl-shade] (1) -- (2);
         }
         \onslide<15->{
             \node[bc=lgray] (3) at (2,1.4) {\faFileText};
-            \draw[-Kite,ultra thick,lgray] (3) -- (2);
+            \draw[tarrow=lgray] (3) -- (2);
         }
 
         \onslide<16->{
-            \node[bc] (4) at (4,0) {\cfl{btdl@color@secondary}};
-            \draw[-Kite,ultra thick,btdl@color@secondary] (2) -- (4);
+            \node[bc] (4) at (4,0) {\cfl{hl-shade}};
+            \draw[tarrow=hl-shade] (2) -- (4);
         }
 
 
-        % \node[bc] (2) at (4,0) {\cfl{btdl@color@secondary}}};
+        % \node[bc] (2) at (4,0) {\cfl{hl-shade}}};
         \end{scope}
         \node at(0,-3.5) {};
     \end{tikzpicture}
@@ -126,23 +126,23 @@ if source contains "compile()":
 \nocite{pdf:ddc}
 \begin{frame}{Diverse Double Compiling}
     \begin{layout-imageonly}
-        \begin{tikzpicture}[bc/.default={lgray}]
+        \centering\begin{tikzpicture}[bc/.default={lgray}]
             \onslide<2->{\node[bc] (0) at (0,1.4) {\faFileText};}
             \onslide<3->{\node[bc] (1) at (-1.25,0) {\!\faLaptop};
             \node[bc] (2) at ( 0,0) {\!\faLaptop};
             \node[bc] (3) at ( 1.25,0) {\!\faLaptop};
 
-            \draw[-Kite,ultra thick,lgray] (0) -- (1);
-            \draw[-Kite,ultra thick,lgray] (0) -- (2);
-            \draw[-Kite,ultra thick,lgray] (0) -- (3);}
+            \draw[tarrow=lgray] (0) -- (1);
+            \draw[tarrow=lgray] (0) -- (2);
+            \draw[tarrow=lgray] (0) -- (3);}
 
             \onslide<4->{\node[bc=lgray] (a1) at (-1.25,-1.4) {\cfl{lgray}};
             \node[bc=lgray] (a2) at ( 0,-1.4) {\cfl{lgray}};
             \node[bc=lgray] (a3) at ( 1.25,-1.4) {\cfl{lgray}};
 
-            \draw[-Kite,ultra thick,lgray] (1) -- (a1);
-            \draw[-Kite,ultra thick,lgray] (2) -- (a2);
-            \draw[-Kite,ultra thick,lgray] (3) -- (a3);}
+            \draw[tarrow=lgray] (1) -- (a1);
+            \draw[tarrow=lgray] (2) -- (a2);
+            \draw[tarrow=lgray] (3) -- (a3);}
 
             \onslide<5->{\path (a1) -- (a2) node[btdl@color@primary,pos=0.5] {$=$};
             \path (a2) -- (a3) node[btdl@color@primary,pos=0.5] {$=$};}
@@ -152,9 +152,9 @@ if source contains "compile()":
                 \onslide<6->{\node[bc] (0) at (0,1.4) {\faFileText};
                 \node[left=0.5cm] at(0.west) {1.}; \tagS{0}{A}}
                 \onslide<7->{\node[bc] (1) at (2,1.4) {\!\faCogs};
-                \draw[-Kite,ultra thick,lgray] (0) -- (1); \tagN{1}{A}}
+                \draw[tarrow=lgray] (0) -- (1); \tagN{1}{A}}
                 \onslide<8->{\node[bc] (2) at (4,1.4) {\cfl{lgray}};
-                \draw[-Kite,ultra thick,lgray] (1) -- (2); \tagS{2}{A}}
+                \draw[tarrow=lgray] (1) -- (2); \tagS{2}{A}}
                 \begin{pgfonlayer}{background}
                     \onslide<9->{\draw[btdl@color@primary,ultra thick] (1) to[bend left=42,edge node={node[circle,fill=white,inner sep=2pt] {$=$}}] (2);}
                 \end{pgfonlayer}
@@ -164,18 +164,18 @@ if source contains "compile()":
                 \tagS{3}{A}
                 \node[left=0.5cm] at(3.west) {2.};}
                 \onslide<11->{\node[bc] (4) at (2,0) {\!\faCogs};
-                \tagN{4}{B}\draw[-Kite,ultra thick,lgray] (3) -- (4);}
+                \tagN{4}{B}\draw[tarrow=lgray] (3) -- (4);}
                 \onslide<12->{\node[bc] (5) at (2,-1.4) {\cfl{lgray}};
                 \tagS{5}{A}
-                \draw[-Kite,ultra thick,lgray] (4) -- (5);}
+                \draw[tarrow=lgray] (4) -- (5);}
 
                 \onslide<13->{\node[bc] (6) at (0,-1.4) {\faFileText};
                 \tagS{6}{A}
-                \draw[-Kite,ultra thick,lgray] (6) -- (5);}
+                \draw[tarrow=lgray] (6) -- (5);}
 
                 \onslide<14->{\node[bc] (7) at (4,-1.4) {\cfl{lgray}};
                 \tagS{7}{A}
-                \draw[-Kite,ultra thick,lgray] (5) -- (7);}
+                \draw[tarrow=lgray] (5) -- (7);}
 
                 \begin{pgfonlayer}{background}
                     \onslide<15->{\draw[btdl@color@primary,ultra thick] (2) to[bend left=42,edge node={node[circle,fill=white,inner sep=2pt] {$=$}}] (7);}
@@ -188,15 +188,71 @@ if source contains "compile()":
 % \SidebarReset
 
 \section{CHAINIAC}
-
+\SidebarCite{Nikitin2017}
 \begin{frame}{CHAINIAC}
-    Hello \cite{Nikitin2017}!
+\begin{layout-imageonly}
+    % TODO: bei animationen zuerst grayed out und dann einblenden
+\centering\vspace*{-.25em}\begin{tikzpicture}[bc/.default={lgray},br/.default={lgray}]
+    \node[br=hl-shade] (r) at (0.25,0) {\sbfamily Release\nodepart{two}\smaller\faKey~~\faKey~~\faKey~~\faKey};
+    \foreach \a in {45,15,-15,-45} {
+        \node[bc] (d\a) at(\a+180:1.66cm) {\!\faLaptop};
+        \draw[tarrow=lgray] (d\a) -- (r);
+    }
+    \begin{scope}[xshift=4cm]
+        \node[bc] (s0) at (d-45-|-1.33,1) {\faBuilding};
+        \node[bc] (s1) at (-1.33,0) {\faBuilding};
+        \node[bc] (s2) at (d45-|-1.33,1) {\faBuilding};
+
+        \node[bc=hl-shade] (s) at (0,0) {\faKey};
+        % \node[circle,minimum width=2*1.66cm] (sc) at (0,0) {};
+        \foreach \i in {0,1,2} {
+            \draw[tarrow=lgray] (s\i) -- (s);
+        }
+    \end{scope}
+
+    \begin{scope}[xshift=6.15cm,yshift=.75cm]
+        \begin{pgfinterruptboundingbox}
+        \foreach \i/\a in {0/7,1/6,2/5,3/4} {%
+            \def\c{lgray}%
+            \ifnum\i=0\def\c{hl-shade}\fi%
+            \node[bc=\c,text width=.25em] (t\i) at (0,-\i/2) {};
+            %\node[darkgray,scale=0.75] at (t\i) {\a};
+        }
+        \node[brs=lgray,text width=.25em,text height=.25em] (tc1) at (0.66,-1/2) {};
+        \node[brs=lgray,text width=.25em,text height=.25em] (tc3) at (0.66,-3/2) {};
+        \begin{pgfonlayer}{background}
+            \draw[tarrow=lgray,line cap=round] (t3)++(0,-.5cm) coordinate (lrc-end) -- ($(t0)+(0,0.75cm)$);
+            \draw[t=lgray,line cap=round] (tc1) -- (lrc-end-|tc3) (t0) -- (tc1) -- (t1) (t2) -- (tc3) -- (t3);
+        \end{pgfonlayer}
+        \end{pgfinterruptboundingbox}
+    \end{scope}
+
+    \begin{scope}[xshift=9.5cm]
+        \node[bc] (u) at (d-15-|0,0) {\faRefresh};
+        \foreach[count=\i] \x/\y in {0/0,-.75/0,.75/0,-.375/-.5,.375/-.5} {
+            \node[darkgray,scale=0.9] (u\i) at(\x,\y-.75) {\faUser};
+            \draw[t=lgray] (u\i) -- (u);
+        }
+    \end{scope}
+
+    \begin{scope}[yshift=2.25cm]
+    \begin{pgfinterruptboundingbox}
+        \fill[lgray,rounded corners=1.5pt] (-1.66-.45,0) rectangle (9.5+.75+.25,0.1);
+        \draw[line width=.5ex,btdl@color@background] (1.66,0) -- ++(0,.1);
+        \draw[line width=.5ex,btdl@color@background] (5,0) -- ++(0,.1);
+        \draw[line width=.5ex,btdl@color@background] (8,0) -- ++(0,.1);
+    \end{pgfinterruptboundingbox}
+    \end{scope}
+
+\end{tikzpicture}
+\end{layout-imageonly}
 \end{frame}
+\SidebarReset
 
 \section{Conclusion}
 
 \begin{frame}{Conclusion}
-    Hello
+    [TODO] Rückblick: Problem. Dann Übersicht: DDC + CHAINIAC + weitere Probleme: eine Option in vielen. => Rückblende zu warum \enquote{Trust}
 \end{frame}
 
 

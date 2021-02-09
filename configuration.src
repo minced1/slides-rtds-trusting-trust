@@ -7,9 +7,9 @@
 \usepackage{lipsum}
 
 \usetheme[libs,nofootfade,centerfoot]{dividing-lines}
-\usepackage{lecture-t-diagrams,csquotes,siunitx,booktabs,bookmark}
+\usepackage{lecture-t-diagrams,csquotes,siunitx,booktabs,bookmark,relsize}
 \usepackage[color,sopra-tables={cpalette},lecture-links={patchurl},lecture-bibliography={biber,style=numeric},sopra-listings={print},beamer-latex-pdfpc-notes={disablemarkdown=false}]{lithie-util}
-\usetikzlibrary{arrows.meta,calc,backgrounds}
+\usetikzlibrary{arrows.meta,calc,backgrounds,shapes.multipart}
 \solLoadLanguage{cpp}
 
 \lstset{showstringspaces=false}
@@ -22,7 +22,6 @@
 \def\SL#1{\mbox{\tblockfont{SL}\ifx!#1!\else\textsubscript{\thinspace\T{#1}}\fi}}
 \def\SC#1{\mbox{\tblockfont{SC}\ifx!#1!\else\textsubscript{\thinspace\T{#1}}\fi}}
 \def\ML#1{\mbox{\tblockfont{ML}\ifx!#1!\else\textsubscript{\thinspace\T{#1}}\fi}}
-\colorlet{lgray}{lightgray!45!white}
 
 \SetAllLinkStyle{#1}%
 
@@ -44,11 +43,21 @@
 
 \tikzset{
     bc/.style={circle,draw,fill,#1,text=darkgray,align=center,text width=0.75em},
+    brs/.style={rectangle,rounded corners=2.5pt,draw,fill,#1,text=darkgray,align=center},
+    br/.style={brs=#1,rectangle split,rectangle split parts=2,draw=btdl@color@background,thick,font=\scriptsize\sffamily},
+    br/.default={hl-shade},
     bcsmall/.style={circle,draw,fill,#1,text=darkgray,align=center,inner sep=2pt},
-    bc/.default={btdl@color@secondary},
-    bcsmall/.default={btdl@color@secondary}
+    bc/.default={hl-shade},
+    bcsmall/.default={hl-shade},
+    t/.style={ultra thick,#1},
+    tarrow/.style={-Kite,t=#1},
+    dtarrow/.style={Kite-Kite,t=#1}
 }
 
 \def\cfl#1{\faFile\llap{\color{#1}\tiny\faCogs\;}}
 \def\tagS#1#2{\node[above left=-0.082cm,darkgray,scale=0.65,circle,fill=lgray,inner sep=1pt] at(#1.south east) {\sbfamily#2};}
-\def\tagN#1#2{\node[below left=-0.082cm,darkgray,scale=0.65,circle,fill=btdl@color@secondary,inner sep=1pt] at(#1.north east) {\sbfamily#2};}
+\def\tagN#1#2{\node[below left=-0.082cm,darkgray,scale=0.65,circle,fill=hl-shade,inner sep=1pt] at(#1.north east) {\sbfamily#2};}
+
+
+\colorlet{lgray}{lightgray!45!white}
+\colorlet{hl-shade}{btdl@color@secondary}
