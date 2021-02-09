@@ -1,5 +1,7 @@
 default_files:
   - atvs-presentation
-default_threads: 1
+  - noanim-atvs-presentation
+  - noanim-noannot-atvs-presentation
+default_threads: 3
 extra_wanted_files:
   - "{out_dir}/{file_base_noext}.pdfpc"

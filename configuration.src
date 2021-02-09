@@ -1,4 +1,4 @@
-\documentclass[aspectratio=169,usepdftitle=true,handout]{beamer}
+\documentclass[aspectratio=169,usepdftitle=true]{beamer}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -13,10 +13,11 @@
 \solLoadLanguage{cpp}
 
 \lstset{showstringspaces=false}
-\colorlet{semigray}{gray!60!darkgray}
+\colorlet{semigray}{gray!70!darkgray}
 \lstcolorlet{keywordA}{black} \lstcolorlet{keywordB}{black}
 \lstcolorlet{keywordC}{semigray} \lstcolorlet{literals}{semigray}
 \solSetStyle{numbers}{\color{semigray}}
+\solSetStyle{literals}{\color{semigray}}
 
 \def\SL#1{\mbox{\tblockfont{SL}\ifx!#1!\else\textsubscript{\thinspace\T{#1}}\fi}}
 \def\SC#1{\mbox{\tblockfont{SC}\ifx!#1!\else\textsubscript{\thinspace\T{#1}}\fi}}
@@ -49,4 +50,5 @@
 }
 
 \def\cfl#1{\faFile\llap{\color{#1}\tiny\faCogs\;}}
-\def\tagN#1#2{\node[above left=-0.075cm,darkgray,scale=0.65,circle,fill=lgray,inner sep=1pt] at(#1.south east) {\sbfamily#2};}
+\def\tagS#1#2{\node[above left=-0.082cm,darkgray,scale=0.65,circle,fill=lgray,inner sep=1pt] at(#1.south east) {\sbfamily#2};}
+\def\tagN#1#2{\node[below left=-0.082cm,darkgray,scale=0.65,circle,fill=btdl@color@secondary,inner sep=1pt] at(#1.north east) {\sbfamily#2};}
