@@ -19,13 +19,13 @@
 \section{Motivation}
 
 \begin{frame}{\space}
-    \pause{}\begin{layout-imageonly}
+    \onslide<2->{\begin{layout-imageonly}
     \begin{tikzpicture}
         \node at(0.75,0.25) {\typesetBox{>\,500\,million users}{XcodeGhost}{2005}{url:xcodeghost}};
         \node at(7,2) {\typesetBox{\textasciitilde\,18\,000 customers}{SolarWinds}{2020}{attacksolarwinds2020}};
         \node at(3.33,-2) {\typesetBox{>\,100\,000 users}{Win32/Induc}{2009}{Lipovsky2011}};
     \end{tikzpicture}
-\end{layout-imageonly}
+\end{layout-imageonly}}
 \note{\textbf{X Minuten}}
 \note[itemize]{
     \item Angriffsmuster Rede von Ken Thompson
@@ -85,7 +85,7 @@
 \makeatletter
 \begin{frame}[fragile]{The Attack}
 \begin{layout-imageonly}
-    \only<1-8|handout:0>{\begin{center}\scalebox{0.9}{\boostrapping}\end{center}}
+    \only<handout:0|1-8>{\begin{center}\scalebox{0.9}{\boostrapping}\end{center}}
     \only<9->{
 \begin{tikzpicture}
     \node[scale=0.6,right] (bootstrap) at (0,0) {\usebox{\bootstrapbox}};
@@ -110,8 +110,8 @@ if source contains "compile()":
 % !*\onslide<10->*!if source contains "if(check(pw))":
 % !*\onslide<10->*!  replace(line, "check", "\"a\" == ");
 \end{minipage}%
+\onslide<1->
 \end{onlyenv}% fake slidecounter thinking max
-\only<9-10>{}%
 \end{layout-imageonly}
 \note{\textbf{Y Minuten}}
 \note[itemize]{
