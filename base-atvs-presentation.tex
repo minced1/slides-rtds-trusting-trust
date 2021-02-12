@@ -14,6 +14,14 @@
 % \href{https://creativecommons.org/licenses/by-sa/4.0/}{\ccbysa}
 \date{February 12, 2021}
 
+\def\PostTitlepage{%
+\note{\textbf{1 Minute}}
+\note[itemize]{
+    \item Hallo und Herzlich Willkommen
+    \item Wir attackieren nicht den Quellcode (Backdoor etc.) sondern ein Programm was man oft gar nicht als Programm sieht: IDE, den Compiler
+}
+}
+
 \begin{document}
 
 \section{Motivation}
@@ -21,17 +29,19 @@
 \begin{frame}{\space}
     \onslide<2->{\begin{layout-imageonly}
     \begin{tikzpicture}
-        \node at(0.75,0.25) {\typesetBox{>\,500\,million users}{XcodeGhost}{2005}{url:xcodeghost}};
+        \node at(0.75,0.25) {\typesetBox{>\,500\,million users}{XcodeGhost}{2015}{url:xcodeghost}};
         \node at(7,2) {\typesetBox{\textasciitilde\,18\,000 customers}{SolarWinds}{2020}{attacksolarwinds2020}};
         \node at(3.33,-2) {\typesetBox{>\,100\,000 users}{Win32/Induc}{2009}{Lipovsky2011}};
     \end{tikzpicture}
 \end{layout-imageonly}}
-\note{\textbf{X Minuten}}
+
+\note{\textbf{1 Minute}}
 \note[itemize]{
     \item Angriffsmuster Rede von Ken Thompson
-    \item >500 mio XcodeGhost
-    \item 18\,000 Kunden Solar Winds, auch US-Regierung
-    \item 100\,000de Nutzer bei Win32/Induc (Delphi)
+    \item Solar Winds, auch \textit{Institutionen US-Regierung} März bis Juni
+    \item >500 mio XcodeGhost \textbf{2015}
+    \item 100\,000de Nutzer bei Win32/Induc (Delphi) \textbf{2011}
+    \item \textbf{Übersicht}, \textbf{DISCLAIMER}
 }
 \end{frame}
 
@@ -40,42 +50,43 @@
 \def\boostrapping{%
 \begin{t-diagram}[tborder/.append style={draw=none,fill=lgray,rounded corners=4pt}]
     \begin{scope}[tborder/.append style={fill=hl-shade}]
-        \onslide<2->{\tblock[g]{\tblocksize*8+4*\tblockoffset,2*\tblocksize+2*\tblockoffset}{\SL{}}{\ML{}}{\ML{}}}
+        \onslide<2->{\tblock[g]{\tblocksize*8+4*\tblockoffset,2*\tblocksize+2*\tblockoffset}{\SL{}}{\ifdisleos\ML{}\else\only<2|handout:0>{\TL{}}\only<3->{\ML{}}\fi}{\ifdisleos\ML{}\else\only<2|handout:0>{\IL{}}\only<3->{\ML{}}\fi}}
     \end{scope}
     \begin{scope}[tborder/.append style={densely dashed}]
-    \onslide<3->{\tblock[b]{2*\tblocksize+\tblockoffset,-\tblocksize-\tblockoffset}{T}{\ML{}}{\ML{}}}
-        \onslide<5->{\tblock[c]{\tblocksize*4+\tblockoffset*2,0}{\SL0}{\ML{}}{\ML{}}}
-        \onslide<7->{\tblock[f]{\tblocksize*6+3*\tblockoffset,\tblocksize+\tblockoffset}{\SL1}{\ML{}}{\ML{}}}
+    \onslide<4->{\tblock[b]{2*\tblocksize+\tblockoffset,-\tblocksize-\tblockoffset}{T}{\ML{}}{\ML{}}}
+        \onslide<6->{\tblock[c]{\tblocksize*4+\tblockoffset*2,0}{\SL0}{\ML{}}{\ML{}}}
+        \onslide<8->{\tblock[f]{\tblocksize*6+3*\tblockoffset,\tblocksize+\tblockoffset}{\SL1}{\ML{}}{\ML{}}}
     \end{scope}
-    \onslide<4->{\tblock[a]{0,0}{\SL0}{\ML{}}{T}}
-    \onslide<6->{\tblock[d]{\tblocksize*2+\tblockoffset,\tblocksize+\tblockoffset}{\SL1}{\ML{}}{\SL0}}
-    \onslide<8->{\tblock[e]{\tblocksize*4+2*\tblockoffset,2*\tblocksize+2*\tblockoffset}{\SL{}}{\ML{}}{\SL1}}
+    \onslide<5->{\tblock[a]{0,0}{\SL0}{\ML{}}{T}}
+    \onslide<7->{\tblock[d]{\tblocksize*2+\tblockoffset,\tblocksize+\tblockoffset}{\SL1}{\ML{}}{\SL0}}
+    \onslide<9->{\tblock[e]{\tblocksize*4+2*\tblockoffset,2*\tblocksize+2*\tblockoffset}{\SL{}}{\ML{}}{\SL1}}
 \end{t-diagram}
 }
 
 \section{The Attack}
 \SidebarCite{book:mckeemanCompilerGenerator}
 \SidebarCite{Thompson1984}
-\def\disableos{\def\onslide<##1>##2{##2}}
+\newif\ifdisleos
+\def\disableos{\def\onslide<##1>##2{##2}\disleostrue}
 \newsavebox\bootstrapbox
 \savebox\bootstrapbox{\disableos\boostrapping}
 
 \def\infectingdc{%
-\onslide<12->{\node[bc] (0) at (0,1.4) {\faFileText};}
-\onslide<13->{
+\onslide<13->{\node[bc] (0) at (0,1.4) {\faFileText};}
+\onslide<14->{
     \node[bc=lgray] (1) at (0,0) {\faFile\llap{\color{lgray}\tiny\faCogs\;}};
     \draw[tarrow=hl-shade] (0) -- (1);
 }
-\onslide<14->{
+\onslide<15->{
     \node[bc] (2) at (2,0) {\cfl{hl-shade}};
     \draw[tarrow=hl-shade] (1) -- (2);
 }
-\onslide<15->{
+\onslide<16->{
     \node[bc=lgray] (3) at (2,1.4) {\faFileText};
     \draw[tarrow=lgray] (3) -- (2);
 }
 
-\onslide<16->{
+\onslide<17->{
     \node[bc] (4) at (4,0) {\cfl{hl-shade}};
     \draw[tarrow=hl-shade] (2) -- (4);
 }
@@ -85,8 +96,8 @@
 \makeatletter
 \begin{frame}[fragile]{The Attack}
 \begin{layout-imageonly}
-    \only<handout:0|1-8>{\begin{center}\scalebox{0.9}{\boostrapping}\end{center}}
-    \only<9->{
+    \only<handout:0|1-9>{\begin{center}\scalebox{0.9}{\boostrapping}\end{center}}
+    \only<10->{
 \begin{tikzpicture}
     \node[scale=0.6,right] (bootstrap) at (0,0) {\usebox{\bootstrapbox}};
 \begin{scope}[shift=(bootstrap.east),xshift=1.85cm,yshift=-0.69cm]
@@ -94,18 +105,18 @@
 \end{scope}
     \node at(0,-3.5) {};
 \end{tikzpicture}}%
-\begin{onlyenv}<9->
+\begin{onlyenv}<10->
 \strut~\vspace*{-7em}\\
 \hspace*{.265\linewidth}\begin{minipage}[b]{0.75\linewidth}
 \lstfs{8}\begin{plaincpp}[morekeywords={[1]{if,contains}},morekeywords={[4]{source}}]
-!*\onslide<11->*!inject = 'inject = %c%s%c;
+!*\onslide<12->*!inject = 'inject = %c%s%c
 if source contains "compile()":
   prepend("compile()", inject % 34, inject, 34)'
 
 if source contains "compile()":
   prepend("compile()", inject % 34, inject, 34)
 
-!*\onslide<10->*!compile();
+!*\onslide<11->*!compile()
 \end{plaincpp}
 % !*\onslide<10->*!if source contains "if(check(pw))":
 % !*\onslide<10->*!  replace(line, "check", "\"a\" == ");
@@ -115,6 +126,7 @@ if source contains "compile()":
 \end{layout-imageonly}
 \note{\textbf{Y Minuten}}
 \note[itemize]{
+    \item viele Compiler heute in der eigenen Sprache (C & Go)
     \item Zuerst: Bootstrapping (Go-Compiler seit 1.5)
     \item Wir vereinfachen einmal mit 'compile'
     \item Einbau von Quine
@@ -266,7 +278,82 @@ if source contains "compile()":
     \chainc
 \end{tikzpicture}
 \end{layout-imageonly}
+\note[itemize]{
+    \item Jetzt haben wir also \textbf{eine Möglichkeit den Quellcode eins Compilers zu überprüfen}. Wie aber der zu Beginn genannte \textbf{Angriff auf XcodeGhost} zeigt müssen wir auch absichern, dass die korrekte \textbf{Software zum Nutzer} gelangt. \textbf{CHAINIAC} kombiniert \textit{Reproducible Builds} und diese Absicherung.
+    \item Skipchains kompliziert, mehr findet sich im zugehörigen Paper
+    \item Single point of failure -> 3rd party witnesses
+    \item Transparency -> Public Timeline
+    \item Man-in-the-middle -> release log & verified builds
+    \item Aufwändiges ändern signing keys -> Skipchains
+}
 \end{frame}
+
+\iffalse
+    \tikzset{every node/.append style={font=\sffamily,scale=.9},sub/.style={gray},skip/.style={draw=black,fill=lgray},%
+    forward/.style={{Circle[open,fill=lgray,length=4pt]}-Kite,shorten <=-2pt},
+    backward/.style={{Circle[open,fill=lgray,length=4pt]}-Kite,shorten <=-2pt}}
+
+\def\ffromto#1 -> #2;{\path[name path=Line] (#1) -- ([xshift=-\sx cm]#1-|#2); \draw[forward,name intersections={of=Line and #2}] (#1) -- (intersection-1) -- ([xshift=-\sx cm]#2);}
+% first forward:
+\def\fintersline#1{\path[name path=#1] ([xshift=-\sx cm]#1) -- ++(-1.333,2);}
+\def\bfromto#1 -> #2;{\draw[backward] (#1) -- ([xshift=\sx cm]#2);}
+
+\begin{frame}{Skipchains}
+\begin{layout-imageonly}
+    % TODO: bei animationen zuerst grayed out und dann einblenden
+\centering\vspace*{-.25em}%
+\begin{tikzpicture}[bc/.default={lgray},br/.default={lgray}]
+    \foreach[count=\i] \c in {3,2,1,1,2,3} {
+        \node[left,gray] (\i) at(0,-\i/1.75) {};
+    }
+
+    \foreach  \i/\a in {0/{i-4},1/{i-3},2/{i-2},3/{i-1},4/{i}} {
+        \node[] (u\i) at (1.75*\i+0.75,0) {};
+    }
+
+    \def\sx{0.3}\def\sy{0.085}
+    % first
+    \draw[skip] ([shift={(-\sx,-\sy)}]6.south-|u0) rectangle ([shift={(\sx,\sy)}]4.north-|u0);
+    \draw[dotted] ([yshift=\sy cm]4.north-|u0) coordinate (0t) -- (1-|u0);
+    % second
+        \draw[densely dashed] ([shift={(-\sx,-\sy)}]6.south-|u1) rectangle ([shift={(\sx,\sy)}]4.north-|u1);
+        \draw[skip] ([shift={(-\sx,-\sy)}]4.south-|u1) rectangle ([shift={(\sx,\sy)}]4.north-|u1);
+        \draw[dotted] ([yshift=\sy cm]4.north-|u1) coordinate (1t) -- (3-|u1);
+    % third
+        \draw[densely dashed] ([shift={(-\sx,-\sy)}]6.south-|u2) rectangle ([shift={(\sx,\sy)}]4.north-|u2);
+        \draw[skip] ([shift={(-\sx,-\sy)}]5.south-|u2) rectangle ([shift={(\sx,\sy)}]4.north-|u2);
+        \draw[dotted] ([yshift=\sy cm]4.north-|u2) coordinate (2t) -- (2-|u2);
+    % fourth
+        \draw[densely dashed] ([shift={(-\sx,-\sy)}]6.south-|u3) rectangle ([shift={(\sx,\sy)}]4.north-|u3);
+        \draw[skip] ([shift={(-\sx,-\sy)}]4.south-|u3) rectangle ([shift={(\sx,\sy)}]4.north-|u3);
+        \draw[dotted] ([yshift=\sy cm]4.north-|u3) coordinate (3t) -- (3-|u3);
+    % fifth
+        \draw[skip] ([shift={(-\sx,-\sy)}]6.south-|u4) rectangle ([shift={(\sx,\sy)}]4.north-|u4);
+        \draw[dotted] ([yshift=\sy cm]4.north-|u4) coordinate (4t) -- (1-|u4);
+
+        \fintersline{1t}\fintersline{2t}\fintersline{3t}\fintersline{4t}
+        \draw[forward,densely dashed] (1-|u4) -- ++(0.66,0);
+        \draw[forward,densely dashed] (2-|u4) -- ++(0.66,0);
+        \draw[forward,densely dashed] (3-|u4) -- ++(0.66,0);
+        \ffromto 3-|u0 -> 1t; \ffromto 2-|u0 -> 2t; \ffromto 1-|u0 -> 4t;
+        \ffromto 3-|u1 -> 2t;
+        \ffromto 3-|u2 -> 3t; \ffromto 2-|u2 -> 4t;
+        \ffromto 3-|u3 -> 4t;
+
+        \bfromto 4-|u1 -> 4-|u0;
+        \bfromto 4-|u2 -> 4-|u1; \bfromto 5-|u2 -> 5-|u0;
+        \bfromto 4-|u3 -> 4-|u2;
+        \bfromto 4-|u4 -> 4-|u3; \bfromto 5-|u4 -> 5-|u2; \bfromto 6-|u4 -> 6-|u0;
+        \draw[backward,densely dashed] (4-|u0) -- ++(-0.66,0);
+        \draw[backward,densely dashed] (5-|u0) -- ++(-0.66,0);
+        \draw[backward,densely dashed] (6-|u0) -- ++(-0.66,0);
+\end{tikzpicture}
+\end{layout-imageonly}
+\note[itemize]{
+    \item
+}
+\end{frame}
+\fi
 \SidebarReset
 
 \section{Conclusion}

@@ -8,7 +8,7 @@
 \usetheme[libs,nofootfade,centerfoot]{dividing-lines}
 \usepackage{lecture-t-diagrams,csquotes,siunitx,booktabs,bookmark,relsize}
 \usepackage[color,sopra-tables={cpalette},lecture-links={patchurl},lecture-bibliography={biber,style=numeric},sopra-listings={print},beamer-latex-pdfpc-notes={disablemarkdown=false}]{lithie-util}
-\usetikzlibrary{arrows.meta,calc,backgrounds,shapes.multipart}
+\usetikzlibrary{arrows.meta,calc,backgrounds,shapes.multipart,intersections}
 \solLoadLanguage{cpp}
 
 \lstset{showstringspaces=false}
@@ -21,6 +21,8 @@
 \def\SL#1{\mbox{\tblockfont{SL}\ifx!#1!\else\textsubscript{\thinspace\T{#1}}\fi}}
 \def\SC#1{\mbox{\tblockfont{SC}\ifx!#1!\else\textsubscript{\thinspace\T{#1}}\fi}}
 \def\ML#1{\mbox{\tblockfont{ML}\ifx!#1!\else\textsubscript{\thinspace\T{#1}}\fi}}
+\def\TL#1{\mbox{\tblockfont{TL}\ifx!#1!\else\textsubscript{\thinspace\T{#1}}\fi}}
+\def\IL#1{\mbox{\tblockfont{IL}\ifx!#1!\else\textsubscript{\thinspace\T{#1}}\fi}}
 
 \SetAllLinkStyle{#1}%
 

@@ -4,6 +4,9 @@ compile:
 show: compile
 	pdfpc --windowed=both atvs-presentation.pdf
 
+show-noanim: compile
+	pdfpc --windowed=both noanim-atvs-presentation.pdf
+
 dependencies:
 	sudo apt-get install cmake valac libgee-0.8-dev libpoppler-glib-dev \
 		libgtk-3-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev \
