@@ -9,5 +9,5 @@ Nichts aufregendes, nur die Quellen für die Folien meiner Seminarpräsentation 
 Die nicht-annotierten Varianten werden automatisch zusammengebastelt und finden sich [hier](https://github.com/EagleoutIce/slides-rtds-trusting-trust/tree/gh-pages).
 
 Schnelllinks:
-* [Animierte Version](https://github.com/EagleoutIce/slides-rtds-trusting-trust/blob/gh-pages/noanim-noannot-atvs-presentation.pdf)
-* [Nicht animierte Version](https://github.com/EagleoutIce/slides-rtds-trusting-trust/blob/gh-pages/noanim-noannot-atvs-presentation.pdf)
+* [Animierte Version](https://media.githubusercontent.com/media/EagleoutIce/slides-rtds-trusting-trust/gh-pages/noannot-atvs-presentation.pdf)
+* [Nicht animierte Version](https://media.githubusercontent.com/media/EagleoutIce/slides-rtds-trusting-trust/gh-pages/noanim-noannot-atvs-presentation.pdf)
