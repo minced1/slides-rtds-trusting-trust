@@ -24,7 +24,7 @@ jobs:
         echo "tx-default" | sltx docker
     - name: Compile the Documents
       run: |
-        sltx compile --root --profile "tx-default" "noanim-noannot-atvs-presentation.pdf" "noannot-atvs-presentation.pdf"
+        sltx compile --root --profile "tx-default" "noanim-noannot-atvs-presentation.tex" "noannot-atvs-presentation.tex"
     - name: Commit
       run: |
         git config --local user.email "action@github.com"
