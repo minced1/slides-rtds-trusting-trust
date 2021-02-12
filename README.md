@@ -1,4 +1,4 @@
-[![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/) ![compile-slides](https://github.com/EagleoutIce/slides-rtds-trusting-trust/workflows/compile-slides/badge.svg)
+[![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)  [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-sa/4.0/) ![compile-slides](https://github.com/EagleoutIce/slides-rtds-trusting-trust/workflows/compile-slides/badge.svg)
 
 # Slides meiner Seminarpräsentation
 
@@ -10,3 +10,8 @@ Schnelllinks:
 
 * [Animierte Version](https://media.githubusercontent.com/media/EagleoutIce/slides-rtds-trusting-trust/gh-pages/noannot-atvs-presentation.pdf)
 * [Nicht animierte Version](https://media.githubusercontent.com/media/EagleoutIce/slides-rtds-trusting-trust/gh-pages/noanim-noannot-atvs-presentation.pdf)
+
+## LaTeX-Code
+
+Der Hauptteil findet sich in [base-atvs-presentation.tex](base-atvs-presentation.tex), die Konfiguration erfolgt in [configuration.src](configuration.src).
+Die anderen Dateien werden für die automatisierte Generierung der verschiedenen Varianten verwendet.
