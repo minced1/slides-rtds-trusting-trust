@@ -15,3 +15,5 @@ Schnelllinks:
 
 Der Hauptteil findet sich in [base-atvs-presentation.tex](base-atvs-presentation.tex), die Konfiguration erfolgt in [configuration.src](configuration.src).
 Die anderen Dateien werden für die automatisierte Generierung der verschiedenen Varianten verwendet.
+
+Das Layout dieser Präsentation findet sich in meinen [beamer-themes](https://github.com/EagleoutIce/beamer-themes) als "dividing-lines", welches in [sltx](https://github.com/EagleoutIce/sltx) enthalten ist.
