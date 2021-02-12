@@ -20,11 +20,12 @@
 \solSetStyle{numbers}{\color{semigray}}
 \solSetStyle{literals}{\color{semigray}}
 
-\def\SL#1{\mbox{\tblockfont{SL}\ifx!#1!\else\textsubscript{\thinspace\T{#1}}\fi}}
-\def\SC#1{\mbox{\tblockfont{SC}\ifx!#1!\else\textsubscript{\thinspace\T{#1}}\fi}}
-\def\ML#1{\mbox{\tblockfont{ML}\ifx!#1!\else\textsubscript{\thinspace\T{#1}}\fi}}
-\def\TL#1{\mbox{\tblockfont{TL}\ifx!#1!\else\textsubscript{\thinspace\T{#1}}\fi}}
-\def\IL#1{\mbox{\tblockfont{IL}\ifx!#1!\else\textsubscript{\thinspace\T{#1}}\fi}}
+\def\bslfrmt#1#2{\mbox{\tblockfont{#1}\ifx!#2!\else\textsubscript{\thinspace\T{#2}}\fi}}
+\def\SL{\bslfrmt{SL}}
+\def\SC{\bslfrmt{SC}}
+\def\ML{\bslfrmt{ML}}
+\def\TL{\bslfrmt{TL}}
+\def\IL{\bslfrmt{IL}}
 
 \SetAllLinkStyle{#1}%
 
