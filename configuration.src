@@ -6,10 +6,12 @@
 \usepackage[english,main=ngerman]{babel}
 
 \usetheme[libs,nofootfade,centerfoot]{dividing-lines}
+
 \usepackage{lecture-t-diagrams,csquotes,siunitx,booktabs,bookmark,relsize}
 \usepackage[color,sopra-tables={cpalette},lecture-links={patchurl},lecture-bibliography={biber,style=numeric},sopra-listings={print},beamer-latex-pdfpc-notes={disablemarkdown=false}]{lithie-util}
-\usetikzlibrary{arrows.meta,calc,backgrounds,shapes.multipart,intersections}
+
 \solLoadLanguage{cpp}
+\usetikzlibrary{arrows.meta,calc,backgrounds,shapes.multipart,intersections}
 
 \lstset{showstringspaces=false}
 \colorlet{semigray}{gray!70!darkgray}
@@ -28,15 +30,12 @@
 
 % just an example command
 \newcommand\twosplit[3][t]{%
-    \begin{columns}[#1]
-    \begin{column}{0.475\linewidth}
-        #2
-    \end{column}\hfill
-    \begin{column}{0.475\linewidth}
-        #3
-    \end{column}
-    \end{columns}
-}
+\begin{columns}[#1]
+\begin{column}{0.475\linewidth}
+    #2
+\end{column}\hfill\begin{column}{0.475\linewidth}
+    #3
+\end{column}\end{columns}}
 
 \def\typesetBox#1#2#3#4{%
     \pbox{7cm}{{\Large\sbfamily#1}\rlap{\textsuperscript{\color{gray}\cite{#4}}}\\\color{gray}#2\hfill#3}%
@@ -58,7 +57,6 @@
 \def\cfl#1{\faFile\llap{\color{#1}\tiny\faCogs\;}}
 \def\tagS#1#2{\node[above left=-0.082cm,darkgray,scale=0.65,circle,fill=lgray,inner sep=1pt] at(#1.south east) {\sbfamily#2};}
 \def\tagN#1#2{\node[below left=-0.082cm,darkgray,scale=0.65,circle,fill=hl-shade,inner sep=1pt] at(#1.north east) {\sbfamily#2};}
-
 
 \colorlet{lgray}{lightgray!45!white}
 \colorlet{hl-shade}{btdl@color@secondary}

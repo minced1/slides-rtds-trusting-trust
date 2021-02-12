@@ -14,6 +14,7 @@
 % \href{https://creativecommons.org/licenses/by-sa/4.0/}{\ccbysa}
 \date{February 12, 2021}
 
+
 \def\PostTitlepage{%
 \note{\textbf{1 Minute}}
 \note[itemize]{
@@ -118,8 +119,6 @@ if source contains "compile()":
 
 !*\onslide<11->*!compile()
 \end{plaincpp}
-% !*\onslide<10->*!if source contains "if(check(pw))":
-% !*\onslide<10->*!  replace(line, "check", "\"a\" == ");
 \end{minipage}%
 \onslide<1->
 \end{onlyenv}% fake slidecounter thinking max
@@ -179,35 +178,35 @@ if source contains "compile()":
 % \SidebarCite{pdf:ddc}
 \nocite{pdf:ddc}
 \begin{frame}{Diverse Double Compiling}
-    \begin{layout-imageonly}
-        \centering\begin{tikzpicture}[bc/.default={lgray}]
-            \onslide<2->{\node[bc] (0) at (0,1.4) {\faFileText};}
-            \onslide<3->{\node[bc] (1) at (-1.25,0) {\!\faLaptop};
-            \node[bc] (2) at ( 0,0) {\!\faLaptop};
-            \node[bc] (3) at ( 1.25,0) {\!\faLaptop};
+\begin{layout-imageonly}
+\centering\begin{tikzpicture}[bc/.default={lgray}]
+    \onslide<2->{\node[bc] (0) at (0,1.4) {\faFileText};}
+    \onslide<3->{\node[bc] (1) at (-1.25,0) {\!\faLaptop};
+    \node[bc] (2) at ( 0,0) {\!\faLaptop};
+    \node[bc] (3) at ( 1.25,0) {\!\faLaptop};
 
-            \draw[tarrow=lgray] (0) -- (1);
-            \draw[tarrow=lgray] (0) -- (2);
-            \draw[tarrow=lgray] (0) -- (3);}
+    \draw[tarrow=lgray] (0) -- (1);
+    \draw[tarrow=lgray] (0) -- (2);
+    \draw[tarrow=lgray] (0) -- (3);}
 
-            \onslide<4->{\node[bc=lgray] (a1) at (-1.25,-1.4) {\cfl{lgray}};
-            \node[bc=lgray] (a2) at ( 0,-1.4) {\cfl{lgray}};
-            \node[bc=lgray] (a3) at ( 1.25,-1.4) {\cfl{lgray}};
+    \onslide<4->{\node[bc=lgray] (a1) at (-1.25,-1.4) {\cfl{lgray}};
+    \node[bc=lgray] (a2) at ( 0,-1.4) {\cfl{lgray}};
+    \node[bc=lgray] (a3) at ( 1.25,-1.4) {\cfl{lgray}};
 
-            \draw[tarrow=lgray] (1) -- (a1);
-            \draw[tarrow=lgray] (2) -- (a2);
-            \draw[tarrow=lgray] (3) -- (a3);}
+    \draw[tarrow=lgray] (1) -- (a1);
+    \draw[tarrow=lgray] (2) -- (a2);
+    \draw[tarrow=lgray] (3) -- (a3);}
 
-            \onslide<5->{\path (a1) -- (a2) node[btdl@color@primary,pos=0.5] {$=$};
-            \path (a2) -- (a3) node[btdl@color@primary,pos=0.5] {$=$};}
-            \onslide<2->{\node[below=.15cm] at (current bounding box.south) {Reproducible};}
+    \onslide<5->{\path (a1) -- (a2) node[btdl@color@primary,pos=0.5] {$=$};
+    \path (a2) -- (a3) node[btdl@color@primary,pos=0.5] {$=$};}
+    \onslide<2->{\node[below=.15cm] at (current bounding box.south) {Reproducible};}
 
-            \begin{scope}[xshift=5.5cm]
-                \ddc
-            \end{scope}
+    \begin{scope}[xshift=5.5cm]
+        \ddc
+    \end{scope}
 
-        \end{tikzpicture}
-    \end{layout-imageonly}
+\end{tikzpicture}
+\end{layout-imageonly}
 \end{frame}
 % \SidebarReset
 
@@ -287,73 +286,6 @@ if source contains "compile()":
     \item Aufwändiges ändern signing keys -> Skipchains
 }
 \end{frame}
-
-\iffalse
-    \tikzset{every node/.append style={font=\sffamily,scale=.9},sub/.style={gray},skip/.style={draw=black,fill=lgray},%
-    forward/.style={{Circle[open,fill=lgray,length=4pt]}-Kite,shorten <=-2pt},
-    backward/.style={{Circle[open,fill=lgray,length=4pt]}-Kite,shorten <=-2pt}}
-
-\def\ffromto#1 -> #2;{\path[name path=Line] (#1) -- ([xshift=-\sx cm]#1-|#2); \draw[forward,name intersections={of=Line and #2}] (#1) -- (intersection-1) -- ([xshift=-\sx cm]#2);}
-% first forward:
-\def\fintersline#1{\path[name path=#1] ([xshift=-\sx cm]#1) -- ++(-1.333,2);}
-\def\bfromto#1 -> #2;{\draw[backward] (#1) -- ([xshift=\sx cm]#2);}
-
-\begin{frame}{Skipchains}
-\begin{layout-imageonly}
-    % TODO: bei animationen zuerst grayed out und dann einblenden
-\centering\vspace*{-.25em}%
-\begin{tikzpicture}[bc/.default={lgray},br/.default={lgray}]
-    \foreach[count=\i] \c in {3,2,1,1,2,3} {
-        \node[left,gray] (\i) at(0,-\i/1.75) {};
-    }
-
-    \foreach  \i/\a in {0/{i-4},1/{i-3},2/{i-2},3/{i-1},4/{i}} {
-        \node[] (u\i) at (1.75*\i+0.75,0) {};
-    }
-
-    \def\sx{0.3}\def\sy{0.085}
-    % first
-    \draw[skip] ([shift={(-\sx,-\sy)}]6.south-|u0) rectangle ([shift={(\sx,\sy)}]4.north-|u0);
-    \draw[dotted] ([yshift=\sy cm]4.north-|u0) coordinate (0t) -- (1-|u0);
-    % second
-        \draw[densely dashed] ([shift={(-\sx,-\sy)}]6.south-|u1) rectangle ([shift={(\sx,\sy)}]4.north-|u1);
-        \draw[skip] ([shift={(-\sx,-\sy)}]4.south-|u1) rectangle ([shift={(\sx,\sy)}]4.north-|u1);
-        \draw[dotted] ([yshift=\sy cm]4.north-|u1) coordinate (1t) -- (3-|u1);
-    % third
-        \draw[densely dashed] ([shift={(-\sx,-\sy)}]6.south-|u2) rectangle ([shift={(\sx,\sy)}]4.north-|u2);
-        \draw[skip] ([shift={(-\sx,-\sy)}]5.south-|u2) rectangle ([shift={(\sx,\sy)}]4.north-|u2);
-        \draw[dotted] ([yshift=\sy cm]4.north-|u2) coordinate (2t) -- (2-|u2);
-    % fourth
-        \draw[densely dashed] ([shift={(-\sx,-\sy)}]6.south-|u3) rectangle ([shift={(\sx,\sy)}]4.north-|u3);
-        \draw[skip] ([shift={(-\sx,-\sy)}]4.south-|u3) rectangle ([shift={(\sx,\sy)}]4.north-|u3);
-        \draw[dotted] ([yshift=\sy cm]4.north-|u3) coordinate (3t) -- (3-|u3);
-    % fifth
-        \draw[skip] ([shift={(-\sx,-\sy)}]6.south-|u4) rectangle ([shift={(\sx,\sy)}]4.north-|u4);
-        \draw[dotted] ([yshift=\sy cm]4.north-|u4) coordinate (4t) -- (1-|u4);
-
-        \fintersline{1t}\fintersline{2t}\fintersline{3t}\fintersline{4t}
-        \draw[forward,densely dashed] (1-|u4) -- ++(0.66,0);
-        \draw[forward,densely dashed] (2-|u4) -- ++(0.66,0);
-        \draw[forward,densely dashed] (3-|u4) -- ++(0.66,0);
-        \ffromto 3-|u0 -> 1t; \ffromto 2-|u0 -> 2t; \ffromto 1-|u0 -> 4t;
-        \ffromto 3-|u1 -> 2t;
-        \ffromto 3-|u2 -> 3t; \ffromto 2-|u2 -> 4t;
-        \ffromto 3-|u3 -> 4t;
-
-        \bfromto 4-|u1 -> 4-|u0;
-        \bfromto 4-|u2 -> 4-|u1; \bfromto 5-|u2 -> 5-|u0;
-        \bfromto 4-|u3 -> 4-|u2;
-        \bfromto 4-|u4 -> 4-|u3; \bfromto 5-|u4 -> 5-|u2; \bfromto 6-|u4 -> 6-|u0;
-        \draw[backward,densely dashed] (4-|u0) -- ++(-0.66,0);
-        \draw[backward,densely dashed] (5-|u0) -- ++(-0.66,0);
-        \draw[backward,densely dashed] (6-|u0) -- ++(-0.66,0);
-\end{tikzpicture}
-\end{layout-imageonly}
-\note[itemize]{
-    \item
-}
-\end{frame}
-\fi
 \SidebarReset
 
 \section{Conclusion}
@@ -388,7 +320,6 @@ if source contains "compile()":
     \end{tikzpicture}}\null}}
     \only<4->{\vspace*{1.25em}\end{column}\end{columns}\hspace*{15em}}\vfill
 \end{layout-imageonly}
-    % [TODO] Rückblick: Problem. Dann Übersicht: DDC + CHAINIAC + weitere Probleme: eine Option in vielen. \(\Rightarrow\) Rückblende zu warum \enquote{Trust}
 \note[itemize]{
     \item Rückblick bisherige Themen: Angriffe, DDC, Chainiac
     \item Reproducible Builds effort: Linux Kernel, (MES) C-Compiler,  ...
