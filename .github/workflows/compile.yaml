@@ -20,7 +20,7 @@ jobs:
         python-version: '3.8'
     - name: Setup and run sltx-install (and pu)
       run: |
-        apt install poppler-utils
+        sudo apt install poppler-utils
         pip install sltx
         echo "tx-default" | sltx docker
     - name: Compile the Documents and generate preview
