@@ -11,6 +11,8 @@ Schnelllinks:
 * [Animierte Version](https://media.githubusercontent.com/media/EagleoutIce/slides-rtds-trusting-trust/gh-pages/noannot-atvs-presentation.pdf)
 * [Nicht animierte Version](https://media.githubusercontent.com/media/EagleoutIce/slides-rtds-trusting-trust/gh-pages/noanim-noannot-atvs-presentation.pdf)
 
+[<img src="https://github.com/EagleoutIce/slides-rtds-trusting-trust/blob/gh-pages/preview-1.png?raw=true" width="700"/>](https://media.githubusercontent.com/media/EagleoutIce/slides-rtds-trusting-trust/gh-pages/noanim-noannot-atvs-presentation.pdf)
+
 ## LaTeX-Code
 
 Der Hauptteil findet sich in [base-atvs-presentation.tex](base-atvs-presentation.tex), die Konfiguration erfolgt in [configuration.src](configuration.src).
